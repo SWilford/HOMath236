@@ -43,6 +43,19 @@ def get_coef_c(coef_a, coef_b, degree):
 
 
 if __name__ == "__main__":
-    a = [5, 1, 10, 3, 5]
-    b = [5, 7, 5, 5, 8]
-    print(get_coef_c(a, b, 4))
+    a = []
+    b = []
+
+    degree = int(input("Enter the degree of the polynomials: "))
+    print()
+
+    for i in range(degree + 1):
+        a.append(int(input("Enter a" + str(i) + ": ")))
+
+    print()
+
+    for i in range(degree + 1):
+        b.append(int(input("Enter b" + str(i) + ": ")))
+
+    print()
+    print("Coefficients of polynomial c: " + str(get_coef_c(a, b, degree)))
