@@ -46,6 +46,7 @@ if __name__ == "__main__":
     a = []
     b = []
 
+    print()
     degree = int(input("Enter the degree of the polynomials: "))
     print()
 
