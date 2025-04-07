@@ -1,11 +1,11 @@
 """Math236 Honors Option Project Part 1.
 
 Author: Spencer Wilford
-Version: 03/24/25
+Version: 03/24/2025
 """
 
 
-def get_coef_c(coef_a, coef_b, degree):
+def cauchy_product(coef_a, coef_b, degree):
     """Get the list of coefficient in the polynomial c.
 
     Returns a list of the coefficients of the polynomial c that
@@ -59,4 +59,4 @@ if __name__ == "__main__":
         b.append(int(input("Enter b" + str(i) + ": ")))
 
     print()
-    print("Coefficients of polynomial c: " + str(get_coef_c(a, b, degree)))
+    print("Coefficients of polynomial c: " + str(cauchy_product(a, b, degree)))
