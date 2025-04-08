@@ -42,10 +42,33 @@ def compute_f_coefs(f0, num_coefs):
     return f
 
 
+def evaluate(coefs, x):
+    """Evaluates a polynomial at a given x using Horner's method.
+
+    The polynomial is assumed to be in the form:
+       f(x) = f0 + f1*x + f2*x^2 + ... + fn*x^n.
+
+    Args:
+        coefs (list): List of coefficients [f0, f1, f2, ..., fn].
+        x (float or int): The point where the polynomial is evaluated.
+
+    Returns:
+        float or int: The value of the polynomial f(x).
+    """
+    result = 0
+    for coef in reversed(coefs):
+        result += result * x + coef
+    return result
+
+
 if __name__ == "__main__":
     f0_input = float(input("Enter the value for f(0): "))
     n = int(input("Enter the number of coefficients to compute: "))
-    coefficients = compute_f_coefs(f0_input, n)
+    coefs = compute_f_coefs(f0_input, n)
     print("The coefficients for f(x) are:")
-    for i, coef in enumerate(coefficients):
-        print(f"f({i}) = {coef}")
+    for i, coef in enumerate(coefs):
+        print(f"a{i} = {coef}")
+
+    x = float(input("Enter a value for x: "))
+    fx = evaluate(coefs, x)
+    print(f"f({x}) =", fx)
