@@ -57,18 +57,37 @@ def evaluate(coefs, x):
     """
     result = 0
     for coef in reversed(coefs):
-        result += result * x + coef
+        result = result * x + coef
     return result
 
 
-if __name__ == "__main__":
-    f0_input = float(input("Enter the value for f(0): "))
-    n = int(input("Enter the number of coefficients to compute: "))
-    coefs = compute_f_coefs(f0_input, n)
-    print("The coefficients for f(x) are:")
-    for i, coef in enumerate(coefs):
-        print(f"a{i} = {coef}")
+def analytic_solution(f0, x):
+    """Closed form solution y = f0 / (1 - f0 * x).
 
-    x = float(input("Enter a value for x: "))
-    fx = evaluate(coefs, x)
-    print(f"f({x}) =", fx)
+    Args:
+        f0 (float or int): The initial value f(0).
+        x (float or int): The point where the solution is evaluated.
+
+    Returns:
+        float or int: The solution.
+    """
+    return f0 / (1 - f0 * x)
+
+
+if __name__ == "__main__":
+    f0 = float(input("Enter f(0): "))
+    n = int(input("How many coefficients? "))
+    coefs = compute_f_coefs(f0, n)
+
+    print("\nCoefficients:")
+    for i, a in enumerate(coefs):
+        print(f"  a{i} = {a}")
+
+    x = float(input("\nEnter a test value for x: "))
+    evaluated_solution = evaluate(coefs, x)
+    test_solution = analytic_solution(f0, x)
+    error = abs(evaluated_solution - test_solution)
+
+    print(f"\nf({x}) at (n={n}): {evaluated_solution}")
+    print(f"f({x}) test solution: {test_solution}")
+    print(f"Error: {error}")
